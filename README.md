@@ -1,0 +1,2 @@
+# Algorithms
+Generic algorithms
