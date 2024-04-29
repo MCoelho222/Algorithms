@@ -13,25 +13,26 @@ def largest_common_charset(words: list[str]) -> str:
         if words = ['ball', 'basketball', 'baseball'] it will return {'ball'}.
         if words = ['baseball', 'ballbase', 'baseball'] it will return {'ball', 'base'}.
     """
-    smallest_word = words[0] # Start with first word. It will be replaced by the smallest word.
+    smallest_word = words[0] # Will be replaced by the smallest word
     size = len(smallest_word)
 
-    # Find smallest word.
+    # Find smallest word
     for word in words:
         n = len(word)
         if n < size:
             size = n
             smallest_word = word
 
-    # Iterate the smallest word with decreasing-size windows/slices.
+    # Iterate through the smallest word with decreasing-size windows/slices
     count = 1
     while count < size:
         print(count)
-        char_set = set([]) # Sets of the largest consecutive common characters.
-        for i in range(count): # count increases the range for i.
-            window = smallest_word[i : i + size - count + 1] # count decreases the range of the slice.
+        char_set = set([]) # Set of the largest consecutive common characters
 
-            # Check if the window characters are in every word.
+        for i in range(count):
+            window = smallest_word[i : i + size - count + 1]
+
+            # Check the presence of window chars in every word
             isin_word = []
             for word in words:
                 if window in word:
@@ -39,20 +40,18 @@ def largest_common_charset(words: list[str]) -> str:
                 else:
                     isin_word.append(False)
             
-            # Add to the char set if it is in every word.
+            # If in every word, add to char set
             if all(isin_word):
                 char_set.add(window)
         
-        # Since the window size is decreasing, once char_set is not empty,
-        # the largest common consecutive set of characters have been found
-        # and can be returned.
+        # Since it uses a decreasing-size window, once a char set is found,it can be returned
         if char_set:
             return char_set
         
         # if no char set was found, continue
         count += 1
     
-    # If no char set was found, return message
+    # If no char set was found
     return 'There is no common set of characters among these strings.'
 
 if __name__ == "__main__":
