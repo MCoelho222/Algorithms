@@ -10,8 +10,8 @@ def largest_common_charset(words: list[str]) -> str:
     Return
     ------
         A set of the largest common consecutive characters. For example, 
-        if words = ['ball', 'basketball', 'baseball'] the functions returns {'ball'}.
-        if words = ['baseball', 'ballbase', 'baseball'] the functions returns {'ball', 'base'}.
+        if words = ['ball', 'basketball', 'baseball'] it will return {'ball'}.
+        if words = ['baseball', 'ballbase', 'baseball'] it will return {'ball', 'base'}.
     """
     smallest_word = words[0] # Start with first word. It will be replaced by the smallest word.
     size = len(smallest_word)
